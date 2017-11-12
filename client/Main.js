@@ -1,5 +1,5 @@
 import React from 'react'
-import { API_KEY } from '../secret';
+//import { API_KEY } from '../secret';
 import axios from 'axios'
 
 
@@ -9,7 +9,7 @@ import axios from 'axios'
 // upload calls processfile
 // processfiles calls sendsFileTOClodu
 // send to cloud calls an ajax request
-var CV_URL = `https://vision.googleapis.com/v1/images:annotate?key=${API_KEY}`
+var CV_URL = 'https://vision.googleapis.com/v1/images:annotate?key=AIzaSyDXwcoDfCkDCScAfKYAYQo3lFL4-3h1jy0'
 
 
 export default class Main extends React.Component {
@@ -34,7 +34,7 @@ export default class Main extends React.Component {
 
   handleClick() {
     console.log('CLICKED')
-     axios.post(CV_URL)
+     axios.post('/api/cloud')
       .then(res => {
         this.setState({
           data: res.data
@@ -74,7 +74,7 @@ export default class Main extends React.Component {
         }
       ]
     }
-    axios.post(CV_URL, JSON.stringify(request))
+    axios.post(CV_URL, request)
       .then(res => {
         
         console.log('res',res)
@@ -132,7 +132,7 @@ export default class Main extends React.Component {
     console.log('RENDER:this.state: ', this.state);
     return (
       <div>
-        <h1>MAIN</h1>
+        <h1>MAIN!</h1>
         <form
           id="fileform"
           onSubmit={this.handleSubmit}
