@@ -1,6 +1,7 @@
 import React from 'react'
 import { API_KEY } from '../secret';
 import axios from 'axios'
+import Wiki from './Wiki';
 
 var CV_URL = `https://vision.googleapis.com/v1/images:annotate?key=${API_KEY}`
 
@@ -74,21 +75,22 @@ export default class Main extends React.Component {
     }
     axios.post(CV_URL, request)
       .then(res => {
-        
-        console.log('res',res.data.responses[0].landmarkAnnotations[0].description)
+        var description=res.data.responses[0].landmarkAnnotations[0].description;
+        this.setState({description})
+       
       })
       .catch(err => {
         console.log('err:', err)
       })
     }
-    
 
 
   render() {
-    console.log('RENDER:this.state: ', this.state);
+    const {description} = this.state
     return (
       <div>
-        <h1>MAIN!</h1>
+        <h1>TRIPOPEDIA</h1>
+        <h3>Upload an image of a landmark and learn:</h3>
         <form
           id="fileform"
           onSubmit={this.handleSubmit}
@@ -97,6 +99,7 @@ export default class Main extends React.Component {
           <br />
           <button type="submit">CLICK ME</button>
         </form>
+        {this.state.description? <Wiki title={description}/> : ""}
         {/* <button onClick={this.handleClick}>GOOGLE PING</button> */}
       </div>
     )
