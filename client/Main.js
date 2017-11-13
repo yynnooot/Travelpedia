@@ -87,6 +87,7 @@ export default class Main extends React.Component {
 
   render() {
     const {description} = this.state
+    console.log(this.state)
     return (
       <div>
         <h1>TRIPOPEDIA</h1>
@@ -96,6 +97,8 @@ export default class Main extends React.Component {
           onSubmit={this.handleSubmit}
         >
           <input onChange={this.handleFiles} type="file" name="fileField" />
+          {this.state.fileName? <img className="photo "src={this.state.fileName}/>: ""}
+          
           <br />
           <button type="submit">CLICK ME</button>
         </form>
