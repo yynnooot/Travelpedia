@@ -1,5 +1,49 @@
 body {
+    font-family: 'Noto Sans';
+    margin:0;
 }
+nav{
+    background-color: #568bc1;
+    color: #fbfbfb;
+    padding: 25px;
+}
+    
+#header{
+    font-family: Avenir Next;
+    display: inline;
+}
+#subheader{
+    display: inline;
+    padding-left: 27px;
+    font-family: 'Lobster', cursive;
+    letter-spacing: 1px;
+}
+#main {
+    display: flex;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 55px;
+}
+
 .photo {
     height: 200px;
+    margin-top: 25px;
+}
+#submit-btn{
+    width:100px;
+    height:36px;
+    display:block;
+    margin-top: 10px;
+}
+
+#left-div{
+    border-right: 0.5px solid grey;
+    padding-right:3em;
+}
+.left-div-text{
+    font-size: 1.1em;
+    font-family:'Noto Sans', sans-serif
+}
+#right-div{
+    margin-left: 3em;
 }

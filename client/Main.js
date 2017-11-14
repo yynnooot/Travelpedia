@@ -90,20 +90,31 @@ export default class Main extends React.Component {
     console.log(this.state)
     return (
       <div>
-        <h1>TRIPOPEDIA</h1>
-        <h3>Upload an image of a landmark and learn:</h3>
-        <form
-          id="fileform"
-          onSubmit={this.handleSubmit}
-        >
-          <input onChange={this.handleFiles} type="file" name="fileField" />
-          {this.state.fileName? <img className="photo "src={this.state.fileName}/>: ""}
-          
-          <br />
-          <button type="submit">CLICK ME</button>
-        </form>
-        {this.state.description? <Wiki title={description}/> : ""}
-        {/* <button onClick={this.handleClick}>GOOGLE PING</button> */}
+        <nav>
+          <h1 id="header">TRAVELPEDIA</h1>
+          <h3 id="subheader">Learn While You Travel</h3>
+        </nav>
+        <div id="main">
+            <div id="left-div">
+              <p className="left-div-text">Choose your image below:</p>
+              <form
+                id="fileform"
+                onSubmit={this.handleSubmit}
+              >
+                <input onChange={this.handleFiles} type="file" name="fileField" />
+                <br />
+              {this.state.fileName? <img className="photo "src={this.state.fileName}/>: ""}
+                {this.state.fileName?
+                  <button id="submit-btn"type="submit">SUBMIT IMAGE</button> : ""}
+                  
+              </form>
+
+            </div>
+            
+            <div id="right-div">      
+              {this.state.description? <Wiki title={description}/> : ""}
+            </div>
+        </div>
       </div>
     )
   }

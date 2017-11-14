@@ -27,6 +27,7 @@ export default class Wiki extends Component {
                       <span key={index}>
                         {item}
                         <br/>
+                        <br/>
                       </span>
                     )
                   })
@@ -55,8 +56,7 @@ export default class Wiki extends Component {
         
         return (
             <div>
-                <h1>WIKI</h1>
-                <h3>{this.state.title}</h3>
+                <h2>Landmark: {this.state.title}</h2>
                 {this.state.text? <p>{this.state.text}</p> : ""}
                 
             </div>
