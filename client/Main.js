@@ -17,7 +17,8 @@ export default class Main extends React.Component {
       file: {},
       reader: {},
       content: '',
-      options: {}
+      options: {},
+      description: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFiles = this.handleFiles.bind(this)
@@ -31,11 +32,13 @@ export default class Main extends React.Component {
     const reader = new FileReader();
     const file = evt.target.files[0];
     if (file) {
+      console.log('NEW IMAGE')
       this.setState ({
         fileName: file.name,
         fileType: file.type,
         file: file,
-        reader: reader
+        reader: reader,
+        description: ""
       })
     }
   }

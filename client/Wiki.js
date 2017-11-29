@@ -56,7 +56,7 @@ export default class Wiki extends Component {
         
         return (
             <div>
-                <h2>Landmark: {this.state.title}</h2>
+                <h1>{this.state.title}</h1>
                 {this.state.text? <p>{this.state.text}</p> : ""}
                 
             </div>
