@@ -3,7 +3,7 @@ const request = require('request')
 const key = 'AIzaSyDXwcoDfCkDCScAfKYAYQo3lFL4-3h1jy0';
 const CV_URL = 'https://vision.googleapis.com/v1/images:annotate?key=' + key;
 
-console.log(CV_URL)
+
 router.get('/cloud', (req, res) => {
   res.send('CLOUD')
 })
