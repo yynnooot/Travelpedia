@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
 import { API_KEY } from '../secret';
-import axios from 'axios'
+import axios from 'axios';
 import Wiki from './Wiki';
+import Nav from './Nav';
 
-var CV_URL = `https://vision.googleapis.com/v1/images:annotate?key=${API_KEY}`
+import Image from './Image';
+
+var CV_URL = `https://vision.googleapis.com/v1/images:annotate?key=${API_KEY}`;
 
 
 export default class Main extends React.Component {
@@ -22,17 +25,14 @@ export default class Main extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFiles = this.handleFiles.bind(this)
-    // this.handleClick = this.handleClick.bind(this)
     this.uploadFile = this.uploadFile.bind(this)
     this.processFile = this.processFile.bind(this)
   }
-  
-  // *** <input onChange={this.handleFiles} type="file" name="fileField"/> ***//
+
   handleFiles(evt) {
     const reader = new FileReader();
     const file = evt.target.files[0];
     if (file) {
-      console.log('NEW IMAGE')
       this.setState ({
         fileName: file.name,
         fileType: file.type,
@@ -45,7 +45,6 @@ export default class Main extends React.Component {
   
   handleSubmit(evt) {
     evt.preventDefault()
-    // console.log('SUBMIT')
     this.uploadFile()
   }
 
@@ -60,7 +59,6 @@ export default class Main extends React.Component {
     // function to convert
     const content64 = content.replace('data:image/jpeg;base64,', '')
     
-    //console.log('before axious state content',content64)
     const request = {
       requests: [
         {
@@ -90,28 +88,21 @@ export default class Main extends React.Component {
 
   render() {
     const {description} = this.state
-    console.log(this.state)
     return (
       <div>
-        <nav>
-          <h1 id="header">TRAVELPEDIA</h1>
-          <h3 id="subheader">Learn While You Travel</h3>
-        </nav>
+        <Nav />
         <div id="main">
             <div id="left-div">
               <p className="left-div-text">Choose your image below:</p>
-              <form
-                id="fileform"
-                onSubmit={this.handleSubmit}
-              >
+              <form id="fileform" onSubmit={this.handleSubmit}>
                 <input onChange={this.handleFiles} type="file" name="fileField" />
                 <br />
-              {this.state.fileName? <img className="photo "src={this.state.fileName}/>: ""}
-                {this.state.fileName?
-                  <button id="submit-btn"type="submit">SUBMIT IMAGE</button> : ""}
-                  
+                {this.state.fileName? (
+                  <div>
+                    <img className="photo "src={this.state.fileName}/>
+                    <button id="submit-btn"type="submit">SUBMIT IMAGE</button> 
+                  </div>) : ""}
               </form>
-
             </div>
             
             <div id="right-div">      

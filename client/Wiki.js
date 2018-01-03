@@ -1,10 +1,5 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-
-// //import wiki from 'wikijs';
-
-// const wiki = require('wikijs').default;
-
+import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class Wiki extends Component {
     constructor(props){
@@ -19,7 +14,7 @@ export default class Wiki extends Component {
         axios.get(`https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&origin=*&explaintext=&titles=${title}`)
         .then(res => { 
             const obj = res.data.query.pages
-            console.log('OBJECT',obj)
+
             for(let key in obj){
                 const text = obj[key].extract;
                 const newText = text.split('\n').map(function(item,index) {
@@ -41,24 +36,18 @@ export default class Wiki extends Component {
         this.axiosRequest(this.props.title);
     }
     componentWillReceiveProps(nextProps){
-        console.log('this.props:',this.props)
-        console.log('nextProps',nextProps)
-
         if(this.props.title !== nextProps.title){
-            // this.setState({title: nextProps.title})
             this.setState({title: nextProps.title})
             this.axiosRequest(nextProps.title)
         }
     }
     
     render(){
-        // const {title} = this.props;
-        
+
         return (
             <div>
                 <h1>{this.state.title}</h1>
                 {this.state.text? <p>{this.state.text}</p> : ""}
-                
             </div>
         )    
     }
