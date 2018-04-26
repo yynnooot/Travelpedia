@@ -4,8 +4,6 @@ import axios from 'axios';
 import Wiki from './Wiki';
 import Nav from './Nav';
 
-import Image from './Image';
-
 var CV_URL = `https://vision.googleapis.com/v1/images:annotate?key=${API_KEY}`;
 
 
